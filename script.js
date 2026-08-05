@@ -11,7 +11,9 @@ return;
 }
 
 document.getElementById("login").style.display="none";
-document.getElementById("loading").style.display="block";
+document.getElementById("system").style.display="block";
+
+glitchTyping();
 
 mulaiLoading();
 
@@ -103,5 +105,59 @@ canvas.style.display="none";
 document.getElementById("system").style.display="block";
 
 },3500);
+
+}
+
+function glitchTyping(){
+
+const target=document.getElementById("typing");
+
+const text="[ SYSTEM LOADED ]";
+
+const glitch="#$%@&!?";
+
+let i=0;
+
+let hasil="";
+
+const animasi=setInterval(()=>{
+
+if(i>=text.length){
+
+clearInterval(animasi);
+
+document.getElementById("userinfo").style.display="block";
+
+return;
+
+}
+
+if(text[i]==" "){
+
+hasil+=" ";
+
+target.textContent=hasil;
+
+i++;
+
+return;
+
+}
+
+hasil+=glitch[Math.floor(Math.random()*glitch.length)];
+
+target.textContent=hasil;
+
+setTimeout(()=>{
+
+hasil=hasil.slice(0,-1)+text[i];
+
+target.textContent=hasil;
+
+},80);
+
+i++;
+
+},120);
 
 }
